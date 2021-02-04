@@ -18,7 +18,7 @@ class Window_Main(QMainWindow, Ui_MainWindow):
 
         self.to_do_handler = to_do_handler
 
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.create_items()

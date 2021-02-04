@@ -4,6 +4,7 @@ from PyQt5 import Qt, QtCore
 from PyQt5.QtCore import pyqtSignal
 from datetime import datetime
 
+
 class Window_AddNew(QMainWindow, Ui_AddNewWindow):
     closed = pyqtSignal()
 
@@ -19,12 +20,14 @@ class Window_AddNew(QMainWindow, Ui_AddNewWindow):
         self.to_do_item_handler = to_do_item_handler
 
         self.setGraphicsEffect(shadow_effect)
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.ui()
         self.add_interactions()
+
         self.show()
 
     def ui(self):
@@ -33,7 +36,6 @@ class Window_AddNew(QMainWindow, Ui_AddNewWindow):
 
     def add_interactions(self):
         self.i_toDoInput.returnPressed.connect(self.add_item)
-        # self.toDoInput.key .connect(self.key_pressed)
 
     def add_item(self):
         item = {
@@ -44,5 +46,4 @@ class Window_AddNew(QMainWindow, Ui_AddNewWindow):
         self.to_do_item_handler.add_item(item)
         self.i_toDoInput.setText("")
         print(self.to_do_item_handler.get_to_do_items())
-        self.closed.emit()
-
+        self.close()

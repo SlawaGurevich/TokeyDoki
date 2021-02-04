@@ -36,24 +36,27 @@ class App:
 
     def hide_main_window(self):
         self.window_main.close()
-        self.window_main = None
 
     def hide_add_new_window(self):
         self.window_add_new.close()
-        self.window_add_new = None
 
     def toggle_add_new_window(self):
         if not self.window_add_new:
             self.window_add_new = Window_AddNew(self.to_do_handler)
-            self.window_add_new.closed.connect(self.hide_add_new_window)
         else:
-            self.hide_add_new_window()
+            if not self.window_add_new.isVisible():
+                self.window_add_new = Window_AddNew(self.to_do_handler)
+            else:
+                self.hide_add_new_window()
 
     def toggle_main_window(self):
         if not self.window_main:
             self.window_main = Window_Main(self.to_do_handler)
         else:
-            self.hide_main_window()
+            if not self.window_main.isVisible():
+                self.window_main = Window_Main(self.to_do_handler)
+            else:
+                self.hide_main_window()
 
     def hide_all_windows(self):
         if self.window_main:
