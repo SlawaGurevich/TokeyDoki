@@ -18,9 +18,16 @@ class AddNewView(QMainWindow, Ui_AddNewWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.add_interactions()
+        self.show()
 
     def add_interactions(self):
         self.toDoInput.returnPressed.connect(self.add_item)
+        # self.toDoInput.key .connect(self.key_pressed)
+
+    def key_pressed(self, event):
+        key = event.key()
+        if key == QtCore.Qt.Key_Escape:
+            self.hide()
 
     def add_item(self):
         item = {}
@@ -29,4 +36,5 @@ class AddNewView(QMainWindow, Ui_AddNewWindow):
         self.to_do_item_handler.add_item(item)
         self.toDoInput.setText("")
         print(self.to_do_item_handler.get_to_do_items())
+        self.hide()
 
