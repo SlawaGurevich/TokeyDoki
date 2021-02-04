@@ -35,10 +35,10 @@ class Ui_AddNewWindow(object):
         self.gridLayout.setHorizontalSpacing(5)
         self.gridLayout.setVerticalSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.lNewId = QtWidgets.QLabel(self.frame)
-        self.lNewId.setMinimumSize(QtCore.QSize(40, 40))
-        self.lNewId.setMaximumSize(QtCore.QSize(40, 40))
-        self.lNewId.setStyleSheet(".QLabel {\n"
+        self.l_newId = QtWidgets.QLabel(self.frame)
+        self.l_newId.setMinimumSize(QtCore.QSize(40, 40))
+        self.l_newId.setMaximumSize(QtCore.QSize(40, 40))
+        self.l_newId.setStyleSheet(".QLabel {\n"
 "    border-top-left-radius: 15;\n"
 "    border-top-right-radius: 5;\n"
 "    border-bottom-right-radius: 5;\n"
@@ -46,9 +46,9 @@ class Ui_AddNewWindow(object):
 "    background-color: #282828;\n"
 "    color: #13B7E7;\n"
 "}")
-        self.lNewId.setAlignment(QtCore.Qt.AlignCenter)
-        self.lNewId.setObjectName("lNewId")
-        self.gridLayout.addWidget(self.lNewId, 0, 0, 1, 1)
+        self.l_newId.setAlignment(QtCore.Qt.AlignCenter)
+        self.l_newId.setObjectName("l_newId")
+        self.gridLayout.addWidget(self.l_newId, 0, 0, 1, 1)
         self.inputWrapper = QtWidgets.QFrame(self.frame)
         self.inputWrapper.setStyleSheet("#inputWrapper {\n"
 "    background-color: #282828;\n"
@@ -64,27 +64,27 @@ class Ui_AddNewWindow(object):
         self.horizontalLayout.setContentsMargins(5, 0, 0, 0)
         self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.toDoInput = QtWidgets.QLineEdit(self.inputWrapper)
-        self.toDoInput.setMinimumSize(QtCore.QSize(0, 40))
+        self.i_toDoInput = QtWidgets.QLineEdit(self.inputWrapper)
+        self.i_toDoInput.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.toDoInput.setFont(font)
-        self.toDoInput.setStyleSheet(".QLineEdit {\n"
+        self.i_toDoInput.setFont(font)
+        self.i_toDoInput.setStyleSheet(".QLineEdit {\n"
 "    color: #13B7E7;\n"
 "    line-height: 40;\n"
 "    background-color: transparent;\n"
 "    border: none;\n"
 "}")
-        self.toDoInput.setObjectName("toDoInput")
-        self.horizontalLayout.addWidget(self.toDoInput)
-        self.toDoId = QtWidgets.QLabel(self.inputWrapper)
-        self.toDoId.setMinimumSize(QtCore.QSize(40, 40))
+        self.i_toDoInput.setObjectName("i_toDoInput")
+        self.horizontalLayout.addWidget(self.i_toDoInput)
+        self.l_enterIcon = QtWidgets.QLabel(self.inputWrapper)
+        self.l_enterIcon.setMinimumSize(QtCore.QSize(40, 40))
         font = QtGui.QFont()
         font.setFamily(".Apple Color Emoji UI")
-        self.toDoId.setFont(font)
-        self.toDoId.setAlignment(QtCore.Qt.AlignCenter)
-        self.toDoId.setObjectName("toDoId")
-        self.horizontalLayout.addWidget(self.toDoId)
+        self.l_enterIcon.setFont(font)
+        self.l_enterIcon.setAlignment(QtCore.Qt.AlignCenter)
+        self.l_enterIcon.setObjectName("l_enterIcon")
+        self.horizontalLayout.addWidget(self.l_enterIcon)
         self.gridLayout.addWidget(self.inputWrapper, 0, 1, 1, 1)
         self.gridLayout_2.addWidget(self.frame, 0, 0, 1, 1)
         AddNewWindow.setCentralWidget(self.centralwidget)
@@ -95,5 +95,5 @@ class Ui_AddNewWindow(object):
     def retranslateUi(self, AddNewWindow):
         _translate = QtCore.QCoreApplication.translate
         AddNewWindow.setWindowTitle(_translate("AddNewWindow", "MainWindow"))
-        self.lNewId.setText(_translate("AddNewWindow", "#"))
-        self.toDoId.setText(_translate("AddNewWindow", "⮐"))
+        self.l_newId.setText(_translate("AddNewWindow", "#"))
+        self.l_enterIcon.setText(_translate("AddNewWindow", "⮐"))

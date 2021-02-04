@@ -2,92 +2,88 @@
 import sys
 import resources
 
-from PyQt5.QtWidgets import  (
+from PyQt5.QtWidgets import (
     QAction,
     QApplication,
-    QMainWindow,
     QMenu,
-    QShortcut,
     QSystemTrayIcon
 )
 
-from PyQt5 import QtCore, Qt, QtGui
+from PyQt5 import QtGui
 
-from MainWindow import Ui_MainWindow
-from AddNewView import AddNewView
+from Window_AddNew import Window_AddNew
+from Window_Main import Window_Main
 
 from ToDoItemHandler import ToDoItemHandler
 from KeyboardListener import KeyboardListener
 
-class MainWindow(QMainWindow, Ui_MainWindow):
-    to_do_items = []
 
-    def __init__(self, *args, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
-        self.setupUi(self)
+class App:
+    keyboard_listener = None
+    to_do_handler = None
+    window_main = None
+    window_add_new = None
 
-        self.to_do_handler = ToDoItemHandler()
+    def __init__(self):
         self.keyboard_listener = KeyboardListener()
-
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
-        self.create_items()
+        self.to_do_handler = ToDoItemHandler()
         self.add_signals()
 
     def add_signals(self):
-        self.keyboard_listener.add.connect(self.show_add_new_window)
-        self.keyboard_listener.main.connect(self.show_main_window)
+        self.keyboard_listener.add.connect(self.toggle_add_new_window)
+        self.keyboard_listener.main.connect(self.toggle_main_window)
         self.keyboard_listener.escape.connect(self.hide_all_windows)
 
+    def hide_main_window(self):
+        self.window_main.close()
+        self.window_main = None
 
-    def create_items(self):
-        self.removeMe_2.setParent(None)
-        self.removeMe_4.setParent(None)
-        self.removeMe_3.setParent(None)
-        for todo in self.to_do_handler.get_to_do_items():
-            print(todo)
+    def hide_add_new_window(self):
+        self.window_add_new.close()
+        self.window_add_new = None
+
+    def toggle_add_new_window(self):
+        if not self.window_add_new:
+            self.window_add_new = Window_AddNew(self.to_do_handler)
+            self.window_add_new.closed.connect(self.hide_add_new_window)
+        else:
+            self.hide_add_new_window()
+
+    def toggle_main_window(self):
+        if not self.window_main:
+            self.window_main = Window_Main(self.to_do_handler)
+        else:
+            self.hide_main_window()
 
     def hide_all_windows(self):
-        if self.isVisible():
-            self.hide()
+        if self.window_main:
+            self.hide_main_window()
 
-        if self.addNewWindow:
-            self.addNewWindow.close()
-            self.addNewWindow = None
+        if self.window_add_new:
+            self.hide_add_new_window()
 
-    def show_main_window(self):
-        print("Show main window shortcut")
-        if self.isVisible():
-            self.hide()
-        else:
-            self.show()
-
-    def show_add_new_window(self):
-        print("Shortcut")
-        if self.addNewWindow:
-            self.addNewWindow = AddNewView(self.to_do_handler)
-        else:
-            self.addNewWindow.close()
-            self.addNewWindow = None
 
 if __name__ == "__main__":
-
+    print("test")
     application = QApplication(sys.argv)
-    application.setStyle('Fusion')
+    print("one")
     application.setQuitOnLastWindowClosed(False)
+
+    application.setStyle('Fusion')
+
 
     status_bar_icon = QtGui.QIcon(":/icons/assets/icon_status_bar.png")
     tray = QSystemTrayIcon()
     tray.setIcon(status_bar_icon)
     tray.setVisible(True)
 
+    print("half")
     menu = QMenu()
     action = QAction("A menu item")
     menu.addAction(action)
 
     tray.setContextMenu(menu)
 
-    window = MainWindow()      # 1. Instantiate ApplicationContext
-    sys.exit(application.exec_())
+    main = App()
+    application.exec_()
 
