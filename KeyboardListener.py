@@ -1,5 +1,6 @@
 from PyQt5.QtCore import QObject, QRunnable, pyqtSlot, QThreadPool, pyqtSignal
 from pynput import keyboard
+from threading import Timer
 
 
 class WorkerSignals(QObject):
@@ -9,17 +10,40 @@ class WorkerSignals(QObject):
     escape = pyqtSignal()
 
 class Worker(QRunnable):
+    cmd_count = 0
+    ctrl_count = 0
+    timeout = .3
+
     def __init__(self):
         super().__init__()
         self.signals = WorkerSignals()
 
+    def reset_cmd(self):
+        self.cmd_count = 0
+
+    def reset_ctrl(self):
+        self.ctrl_count = 0
+
     def show_add(self):
         print("Hotkey add")
-        self.signals.add.emit()
+        self.cmd_count += 1
+
+        if self.cmd_count > 1:
+            self.signals.add.emit()
+            self.reset_cmd()
+
+        timer = Timer(self.timeout, self.reset_cmd)
+        timer.start()
 
     def show_main(self):
         print("Hotkey main")
-        self.signals.main.emit()
+        self.ctrl_count += 1
+        if self.ctrl_count > 1:
+            self.signals.main.emit()
+            self.reset_ctrl()
+
+        timer = Timer(self.timeout, self.reset_ctrl)
+        timer.start()
 
     def show_options(self):
         print("Hotkey options")
@@ -37,8 +61,8 @@ class Worker(QRunnable):
         print("Worker running")
 
         with keyboard.GlobalHotKeys({
-            '<shift>+<ctrl>': self.show_add,
-            '<ctrl>+<cmd>': self.show_main,
+            '<shift>': self.show_add,
+            '<ctrl>': self.show_main,
             '<cmd>+<shift>+g': self.show_options,
             '<esc>': self.escape
         }) as h:

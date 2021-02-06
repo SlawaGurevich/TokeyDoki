@@ -6,8 +6,9 @@ from PyQt5.QtWidgets import (
     QHBoxLayout,
     QGridLayout
 )
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtGui
 from datetime import datetime
+import timeago
 
 # project imports
 from MainWindow import Ui_MainWindow
@@ -42,7 +43,7 @@ class Window_Main(QMainWindow, Ui_MainWindow):
             wrapper_layout.setSpacing(5)
 
             # id label
-            l_id_style = ".QLabel { background-color: #282828; border-radius: 5; }"
+            l_id_style = ".QLabel { background-color: #282828; border-radius: 5; font-size: 18px; }"
             l_id = QLabel(f'{i+1}')
 
             if i == 0:
@@ -57,8 +58,9 @@ class Window_Main(QMainWindow, Ui_MainWindow):
             l_id.setMinimumWidth(40)
             l_id.setAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
 
-            l_date = QLabel(str(self.now - item["date"]))
+            l_date = QLabel(timeago.format(item["date"], self.now))
             l_date.setFixedHeight(40)
+            l_date.setStyleSheet(".QLabel { color: #4B4B4B; }")
 
             # title label
             l_title_style = ".QWidget { background-color: #282828; border-radius: 5; }"
@@ -69,11 +71,12 @@ class Window_Main(QMainWindow, Ui_MainWindow):
                 l_title_style += ".QWidget { border-bottom-right-radius: 15 }"
 
             l_title = QLabel(item["title"])
+            l_title.setFont(QtGui.QFont(".AppleSystemUIFont", 16))
 
             text_wrapper = QWidget()
             text_wrapper.setStyleSheet(l_title_style)
             text_wrapper_layout = QHBoxLayout()
-            text_wrapper_layout.setContentsMargins(5, 0, 5, 0)
+            text_wrapper_layout.setContentsMargins(10, 0, 10, 0)
             text_wrapper_layout.setSpacing(0)
             text_wrapper_layout.addWidget(l_title, 1)
             text_wrapper_layout.addWidget(l_date)
