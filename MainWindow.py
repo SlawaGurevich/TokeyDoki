@@ -14,99 +14,33 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 455)
+        MainWindow.resize(800, 50)
         MainWindow.setMinimumSize(QtCore.QSize(0, 50))
-        MainWindow.setMaximumSize(QtCore.QSize(800, 455))
+        MainWindow.setMaximumSize(QtCore.QSize(800, 410))
         MainWindow.setStyleSheet("QMainWindow {\n"
 "    border-radius: 20;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setMinimumSize(QtCore.QSize(0, 50))
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
         self.fMain = QtWidgets.QFrame(self.centralwidget)
+        self.fMain.setMinimumSize(QtCore.QSize(0, 50))
         self.fMain.setStyleSheet("#fMain {\n"
 "    background-color: #3e3e3e;\n"
 "    border-radius: 19;\n"
-"}\n"
-"\n"
-".QWidget {\n"
-"    height: 40;\n"
-"    max-height: 40;\n"
-"}\n"
-"\n"
-".QLabel {\n"
-"    background-color: red;\n"
-"    border-top-left-radius: 15;\n"
-"}\n"
-"\n"
-".QWidget .QLabel {\n"
-"    background-color: #282828;\n"
-"    border-radius:  5;\n"
 "}")
         self.fMain.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.fMain.setFrameShadow(QtWidgets.QFrame.Raised)
         self.fMain.setObjectName("fMain")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.fMain)
+        self.verticalLayout.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.removeMe_3 = QtWidgets.QWidget(self.fMain)
-        self.removeMe_3.setObjectName("removeMe_3")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.removeMe_3)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setSpacing(5)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.exampleId_2 = QtWidgets.QLabel(self.removeMe_3)
-        self.exampleId_2.setMinimumSize(QtCore.QSize(40, 40))
-        self.exampleId_2.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.exampleId_2.setStyleSheet("")
-        self.exampleId_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.exampleId_2.setObjectName("exampleId_2")
-        self.horizontalLayout_2.addWidget(self.exampleId_2)
-        self.exampleTitle_2 = QtWidgets.QLabel(self.removeMe_3)
-        self.exampleTitle_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.exampleTitle_2.setStyleSheet("")
-        self.exampleTitle_2.setObjectName("exampleTitle_2")
-        self.horizontalLayout_2.addWidget(self.exampleTitle_2)
-        self.verticalLayout.addWidget(self.removeMe_3)
-        self.removeMe_2 = QtWidgets.QWidget(self.fMain)
-        self.removeMe_2.setObjectName("removeMe_2")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.removeMe_2)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(5)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.exampleId = QtWidgets.QLabel(self.removeMe_2)
-        self.exampleId.setMinimumSize(QtCore.QSize(40, 40))
-        self.exampleId.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.exampleId.setStyleSheet("")
-        self.exampleId.setAlignment(QtCore.Qt.AlignCenter)
-        self.exampleId.setObjectName("exampleId")
-        self.horizontalLayout.addWidget(self.exampleId)
-        self.exampleTitle = QtWidgets.QLabel(self.removeMe_2)
-        self.exampleTitle.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.exampleTitle.setStyleSheet("")
-        self.exampleTitle.setObjectName("exampleTitle")
-        self.horizontalLayout.addWidget(self.exampleTitle)
-        self.verticalLayout.addWidget(self.removeMe_2)
-        self.removeMe_4 = QtWidgets.QWidget(self.fMain)
-        self.removeMe_4.setObjectName("removeMe_4")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.removeMe_4)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setSpacing(5)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.exampleId_3 = QtWidgets.QLabel(self.removeMe_4)
-        self.exampleId_3.setMinimumSize(QtCore.QSize(40, 40))
-        self.exampleId_3.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.exampleId_3.setStyleSheet("")
-        self.exampleId_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.exampleId_3.setObjectName("exampleId_3")
-        self.horizontalLayout_3.addWidget(self.exampleId_3)
-        self.exampleTitle_3 = QtWidgets.QLabel(self.removeMe_4)
-        self.exampleTitle_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.exampleTitle_3.setStyleSheet("")
-        self.exampleTitle_3.setObjectName("exampleTitle_3")
-        self.horizontalLayout_3.addWidget(self.exampleTitle_3)
-        self.verticalLayout.addWidget(self.removeMe_4)
         self.gridLayout.addWidget(self.fMain, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -116,9 +50,3 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.exampleId_2.setText(_translate("MainWindow", "1"))
-        self.exampleTitle_2.setText(_translate("MainWindow", "TextLabel"))
-        self.exampleId.setText(_translate("MainWindow", "1"))
-        self.exampleTitle.setText(_translate("MainWindow", "TextLabel"))
-        self.exampleId_3.setText(_translate("MainWindow", "1"))
-        self.exampleTitle_3.setText(_translate("MainWindow", "TextLabel"))

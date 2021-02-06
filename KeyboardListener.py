@@ -37,8 +37,8 @@ class Worker(QRunnable):
         print("Worker running")
 
         with keyboard.GlobalHotKeys({
-            '<cmd>+<shift>+<space>': self.show_add,
-            '<ctrl>+<shift>+<space>': self.show_main,
+            '<shift>+<ctrl>': self.show_add,
+            '<ctrl>+<cmd>': self.show_main,
             '<cmd>+<shift>+g': self.show_options,
             '<esc>': self.escape
         }) as h:

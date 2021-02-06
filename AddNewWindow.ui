@@ -165,13 +165,25 @@
               <height>40</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>.Apple Color Emoji UI</family>
              </font>
             </property>
             <property name="text">
-             <string>⮐</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/icons/assets/icon_return.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -187,6 +199,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

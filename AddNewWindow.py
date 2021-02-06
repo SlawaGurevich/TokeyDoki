@@ -79,9 +79,13 @@ class Ui_AddNewWindow(object):
         self.horizontalLayout.addWidget(self.i_toDoInput)
         self.l_enterIcon = QtWidgets.QLabel(self.inputWrapper)
         self.l_enterIcon.setMinimumSize(QtCore.QSize(40, 40))
+        self.l_enterIcon.setMaximumSize(QtCore.QSize(40, 40))
         font = QtGui.QFont()
         font.setFamily(".Apple Color Emoji UI")
         self.l_enterIcon.setFont(font)
+        self.l_enterIcon.setText("")
+        self.l_enterIcon.setPixmap(QtGui.QPixmap(":/icons/assets/icon_return.png"))
+        self.l_enterIcon.setScaledContents(False)
         self.l_enterIcon.setAlignment(QtCore.Qt.AlignCenter)
         self.l_enterIcon.setObjectName("l_enterIcon")
         self.horizontalLayout.addWidget(self.l_enterIcon)
@@ -96,4 +100,4 @@ class Ui_AddNewWindow(object):
         _translate = QtCore.QCoreApplication.translate
         AddNewWindow.setWindowTitle(_translate("AddNewWindow", "MainWindow"))
         self.l_newId.setText(_translate("AddNewWindow", "#"))
-        self.l_enterIcon.setText(_translate("AddNewWindow", "⮐"))
+import resources

@@ -22,7 +22,7 @@ class ToDoItemHandler:
         return self.to_do_items
 
     def load(self):
-        if os.path.isfile(path_to_list):
+        if os.path.isfile(path_to_list) and os.stat(path_to_list).st_size != 0:
             with open(path_to_list, 'rb') as file:
                 self.to_do_items = pickle.load(file)
         else:

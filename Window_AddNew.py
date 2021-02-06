@@ -20,9 +20,8 @@ class Window_AddNew(QMainWindow, Ui_AddNewWindow):
         self.to_do_item_handler = to_do_item_handler
 
         self.setGraphicsEffect(shadow_effect)
-        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
 
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.ui()
@@ -40,7 +39,8 @@ class Window_AddNew(QMainWindow, Ui_AddNewWindow):
     def add_item(self):
         item = {
             "date": datetime.now(),
-            "title": self.i_toDoInput.text()
+            "title": self.i_toDoInput.text(),
+            "completed": False
         }
 
         self.to_do_item_handler.add_item(item)

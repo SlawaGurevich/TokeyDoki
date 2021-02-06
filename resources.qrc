@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/icons">
         <file>assets/icon_status_bar.png</file>
+        <file>assets/icon_return.png</file>
     </qresource>
 </RCC>
