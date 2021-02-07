@@ -35,6 +35,7 @@ class App:
         self.keyboard_listener.escape.connect(self.hide_all_windows)
 
     def hide_main_window(self):
+        self.window_main.clean_up()
         self.window_main.close()
 
     def hide_add_new_window(self):

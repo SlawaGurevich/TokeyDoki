@@ -12,7 +12,7 @@ class WorkerSignals(QObject):
 class Worker(QRunnable):
     cmd_count = 0
     ctrl_count = 0
-    timeout = .3
+    timeout = .25
 
     def __init__(self):
         super().__init__()
