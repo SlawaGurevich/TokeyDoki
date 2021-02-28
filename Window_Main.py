@@ -49,6 +49,7 @@ class Window_Main(QMainWindow, Ui_MainWindow):
             title = layout_item.findChild(QLabel, "l_title")
             number = layout_item.findChild(QLabel, "l_id")
             font = title.font()
+            
             if item["completed"]:
                 font.setStrikeOut(True)
                 title.setStyleSheet(".QLabel { color: #484848 }")

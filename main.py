@@ -42,6 +42,7 @@ class App:
         self.window_add_new.close()
 
     def toggle_add_new_window(self):
+        self.hide_all_windows()
         if not self.window_add_new:
             self.window_add_new = Window_AddNew(self.to_do_handler)
         else:
@@ -51,6 +52,7 @@ class App:
                 self.hide_add_new_window()
 
     def toggle_main_window(self):
+        self.hide_all_windows()
         if not self.window_main:
             self.window_main = Window_Main(self.to_do_handler)
         else:
